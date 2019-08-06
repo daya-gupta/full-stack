@@ -1,7 +1,21 @@
 import React from 'react';
 import { Breadcrumb, BreadcrumbItem, Card, CardBody, CardHeader, Media } from 'reactstrap';
 import { Link } from 'react-router-dom';
-import RenderLeader from  './RenderLeaderComponent';
+
+const RenderLeader = ({leader}) => (
+    <Media className="mb-5">
+      <Media left href="#">
+        <Media object src={leader.image} alt={leader.name} />
+      </Media>
+      <Media body className="ml-5">
+        <Media heading>
+          {leader.name}
+        </Media>
+        <p>{leader.designation}</p>
+        <p>{leader.description}</p>
+      </Media>
+    </Media>
+);
 
 function About(props) {
 
@@ -66,7 +80,7 @@ function About(props) {
                 <div className="col-12">
                     <h2>Corporate Leadership</h2>
                 </div>
-                <div className="col-12">
+                <div className="col-12 mt-4">
                     <Media list>
                         {leaders}
                     </Media>

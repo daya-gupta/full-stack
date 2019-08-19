@@ -64,12 +64,6 @@ class Contact extends Component {
         return errors;
     }
 
-    handleBlur = (field) => (evt) => {
-        this.setState({
-          touched: { ...this.state.touched, [field]: true },
-        });
-    }
-
     handleInputChange(event) {
         const target = event.target;
         const value = target.type === 'checkbox' ? target.checked : target.value;
@@ -80,14 +74,11 @@ class Contact extends Component {
         });
     }
 
-    handleSubmit(event) {
-        console.log('Current State is: ' + JSON.stringify(this.state));
-        alert('Current State is: ' + JSON.stringify(this.state));
-        // event.preventDefault();
+    handleSubmit(values) {
+        alert('Current State is: ' + JSON.stringify(values));
     }
 
     render() {
-        const errors = this.validate(this.state.firstname, this.state.lastname, this.state.telnum, this.state.email);
         return(
             <div className="container">
                 <div className="row">
@@ -102,7 +93,7 @@ class Contact extends Component {
                 </div>
                 <div className="row row-content">
                     <div className="col-12">
-                    <h3>Location Information</h3>
+                        <h3>Location Information</h3>
                     </div>
                     <div className="col-12 col-sm-4 offset-sm-1">
                             <h5>Our Address</h5>
@@ -220,6 +211,7 @@ class Contact extends Component {
                                      />
                                 </Col>
                             </Row>
+                            <Button className="mt-2" type="submit" value="submit" color="primary">Submit</Button>
                         </LocalForm>
                     </div>
                </div>

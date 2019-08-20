@@ -76,6 +76,7 @@ class Contact extends Component {
 
     handleSubmit(values) {
         alert('Current State is: ' + JSON.stringify(values));
+        this.props.postFeedback(values);
         this.props.resetFeedbackForm();
     }
 
@@ -212,7 +213,32 @@ class Contact extends Component {
                                         />
                                 </Col>
                             </Row>
-                            <Button className="mt-2" type="submit" value="submit" color="primary">Submit</Button>
+                            <Row className="form-group">
+                                <Label md={2}></Label>
+                                <Col md={6}>
+                                    <Control.checkbox model=".agree" id="agree" name="agree"
+                                        className="form-control"
+                                    />
+                                    <Label htmlFor="agree"><b>May we contact you</b></Label>
+                                </Col>
+                                <Col md={4}>
+                                    <Control.select model=".contactType" id="contactType" name="contactType"
+                                        className="form-control pull-right">
+                                        <option value="Email">Email</option>
+                                        <option value="Tel.">Tel</option>
+                                    </Control.select>
+                                </Col>
+                            </Row>
+                            <Row className="form-group">
+                                <Label htmlFor="message" md={2}>Your Feedback</Label>
+                                <Col md={10}>
+                                    <Control.textarea model=".message" id="message" name="message"
+                                        className="form-control"
+                                    />
+                                </Col>
+                            </Row>
+                            <Button className="mt-2" type="submit" value="submit" color="primary">Send Feedback</Button>
+                            <Button className="mt-2 ml-2" type="reset" value="cancel" color="secondary">Cancel</Button>
                         </Form>
                     </div>
                </div>
